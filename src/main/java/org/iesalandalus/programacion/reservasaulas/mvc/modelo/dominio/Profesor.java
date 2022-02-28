@@ -16,7 +16,6 @@ public class Profesor {
 	private String correo;
 	private String telefono;
 
-
 	public Profesor(String nombre, String correo) {
 		setNombre(nombre);
 		setCorreo(correo);
@@ -113,15 +112,17 @@ public class Profesor {
 		return correccion;
 
 	}
-	public Profesor getProfesorFicticio(String correo) {
-		if(correo==null) {
-			throw new NullPointerException("ERROR: El nombre del profesor no puede ser nulo.");
+
+	public static Profesor getProfesorFicticio(String correo) {
+		if (correo == null) {
+			throw new NullPointerException("ERROR: El correo del profesor no puede ser nulo.");
 		}
-		
-		return  new Profesor("Adan Ripoll Camacho",correo,"623456789");
-			
+		if (!correo.matches(ER_CORREO)) {
+			throw new IllegalArgumentException("ERROR: El correo del profesor no es válido.");
+		}
+		return new Profesor("Adan Ripoll Camacho", correo, "623456789");
+
 	}
-	
 
 	@Override
 	public int hashCode() {
@@ -143,8 +144,13 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return "Profesor [nombre=" + nombre + ", correo=" + correo + ", telefono=" + telefono + "]";
+
+		if (telefono == null) {
+
+			return "nombre=" + nombre + ", correo=" + correo;
+		} else {
+			return "nombre=" + nombre + ", correo=" + correo + ", teléfono=" + telefono;
+		}
+
 	}
-	
-	
 }

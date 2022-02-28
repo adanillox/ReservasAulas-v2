@@ -5,16 +5,16 @@ package org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio;
 
 import java.util.Objects;
 
-import org.apache.commons.math3.ml.neuralnet.twod.util.HitHistogram;
+
 
 /**
  * @author Adan
  *
  */
 public class Aula {
-	private static final float PUNTOS_POR_PUESTO = 200;
-	private static final int MN_PUESTOS = 0;
-	private static final int MAX_PUESTOS = 200;
+	private static final float PUNTOS_POR_PUESTO = 0.5f;
+	private static final int MN_PUESTOS = 10;
+	private static final int MAX_PUESTOS = 100;
 	private String nombre;
 	private int puestos;
 	
@@ -29,6 +29,7 @@ public class Aula {
 			throw new NullPointerException("ERROR: No se puede copiar un aula nula.");
 		} else {
 			setNombre(aula.getNombre());
+			setPuestos(aula.getPuestos());
 		}
 	}
 
@@ -48,9 +49,11 @@ public class Aula {
 	}
 
 	private void setPuestos(int puestos) {
-		if (puestos == 0 || puestos<0) {
-			throw new IllegalArgumentException("ERROR: El puesto del aula no puede ser 0 o un numero negativo.");
-		} else {
+	
+		if (puestos>=MAX_PUESTOS || puestos<MN_PUESTOS ) {
+			throw new IllegalArgumentException("ERROR: El número de puestos no es correcto.");
+		}
+		else {
 			this.puestos = puestos;
 		}
 	}
@@ -60,7 +63,7 @@ public class Aula {
 	}
 
 	public float getPuntos() {
-		return this.PUNTOS_POR_PUESTO;
+		return PUNTOS_POR_PUESTO* getPuestos();
 	}
 
 	public static Aula getAulaFicticia(String nombre) {
@@ -91,7 +94,7 @@ public class Aula {
 
 	@Override
 	public String toString() {
-		return "Aula [nombre=" + nombre + ", puestos=" + puestos + "]";
+		return "nombre=" + nombre + ", puestos=" + puestos;
 	}
 
 }
