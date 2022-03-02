@@ -34,7 +34,7 @@ public class Reserva {
 			throw new NullPointerException("ERROR: La reserva debe estar a nombre de un profesor.");
 		}
 		else {
-			this.profesor= profesor;
+			this.profesor= new Profesor(getProfesor());
 		}
 		
 	}
@@ -46,7 +46,7 @@ public class Reserva {
 			throw new NullPointerException("ERROR: La reserva debe ser para un aula concreta.");
 		}
 		else {
-			this.aula=aula;
+			this.aula= new Aula(getAula());
 		}
 		
 	}

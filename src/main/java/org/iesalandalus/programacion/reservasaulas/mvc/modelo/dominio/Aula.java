@@ -63,7 +63,7 @@ public class Aula {
 	}
 
 	public float getPuntos() {
-		return PUNTOS_POR_PUESTO* getPuestos();
+		return PUNTOS_POR_PUESTO * getPuestos();
 	}
 
 	public static Aula getAulaFicticia(String nombre) {

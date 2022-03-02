@@ -126,7 +126,7 @@ public class Profesor {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(correo, nombre, telefono);
+		return Objects.hash(correo);
 	}
 
 	@Override
