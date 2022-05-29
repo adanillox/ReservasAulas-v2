@@ -53,8 +53,13 @@ public class Consola {
 	}
 
 	public static Aula leerAula() {
-		return new Aula(leerNombreAula());
+		System.out.print("Introduce el nombre del aula: ");
+		String nombre = Entrada.cadena();
+		System.out.print("Introduce el número de puestos del aula: ");
+		int puestos = Entrada.entero();
+		return new Aula(nombre, puestos);
 	}
+
 
 	public static String leerNombreAula() {
 		System.out.println("Introduce el nombre del aula");
