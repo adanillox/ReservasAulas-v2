@@ -40,7 +40,7 @@ public class Vista implements IVista {
 		} while (ordinalOpcion != Opcion.SALIR.ordinal());
 	}
 
-	public void salir() {
+	public void terminar() {
 		System.out.println("Adios");
 
 	}
@@ -275,6 +275,12 @@ public class Vista implements IVista {
 
 	@Override
 	public void setControlador(IControlador controlador) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void salir() {
 		// TODO Auto-generated method stub
 		
 	}

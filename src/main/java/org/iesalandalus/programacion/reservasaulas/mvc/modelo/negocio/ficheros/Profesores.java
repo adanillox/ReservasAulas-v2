@@ -163,9 +163,9 @@ public class Profesores implements IProfesores{
 	}
 
 	private void escribir() {
-		File ficheroAulas = new File(NOMBRE_FICHERO_PROFESORES);
+		File ficheroProfesor = new File(NOMBRE_FICHERO_PROFESORES);
 		// Indicamos que se trata de un flujo de salida para escribir objetos
-		try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroAulas))) {
+		try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(ficheroProfesor))) {
 			for (Profesor profesor : coleccionProfesores) {
 				salida.writeObject(profesor);
 			}

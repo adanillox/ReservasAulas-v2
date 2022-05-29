@@ -127,6 +127,7 @@ public enum Opcion {
 			@Override
 			public void ejecutar() {
 				vista.salir();
+				
 				// TODO Auto-generated method stub
 				
 			}

@@ -7,20 +7,22 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
+import org.iesalandalus.programacion.reservasaulas.mvc.modelo.IModelo;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.Modelo;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservasaulas.mvc.vista.IVista;
 import org.iesalandalus.programacion.reservasaulas.mvc.vista.Vista;
 
 /**
  * @author Adan
  *
  */
-public class Controlador {
-	private Modelo modelo;
-	private Vista vista;
+public class Controlador implements IControlador {
+	private IModelo modelo;
+	private IVista vista;
 
 	public Controlador(Modelo modelo, Vista vista) {
 		if (modelo == null) {
@@ -38,19 +40,20 @@ public class Controlador {
 	}
 	
 	public void comenzar() {
+		modelo.comenzar();
 		vista.comenzar();
 	}
 	
 	public void terminar() {
-		vista.salir();
+		modelo.terminar();
 	}
 	
 	public void insertarAula(Aula aula) throws OperationNotSupportedException {
-		modelo.InsertarAula(aula);
+		modelo.insertarAula(aula);
 	}
 	
 	public void insertarProfesor(Profesor profesor) throws OperationNotSupportedException {
-		modelo.InsertarProfesor(profesor);
+		modelo.insertarProfesor(profesor);
 	}
 	
 	public void borrarAula(Aula aula) throws OperationNotSupportedException {
@@ -95,7 +98,7 @@ public class Controlador {
 	}
 
 	public  List<Reserva> getReservasAula(Aula aula) {
-		return modelo.getReservasAula(aula);
+		return modelo.getReservasAulas(aula);
 		
 	}
 	
@@ -111,5 +114,11 @@ public class Controlador {
 	
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) {
 		return modelo.consultarDisponibilidad(aula, permanencia);
+	}
+
+	@Override
+	public List<String> representarReservas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -14,6 +14,10 @@ import org.iesalandalus.programacion.reservasaulas.mvc.modelo.dominio.Aula;
  *
  */
 public interface IAulas {
+	
+	void comenzar();
+	
+	void terminar();
 	Aula buscar(Aula aula);
 
 	void borrar(Aula aula) throws OperationNotSupportedException;
